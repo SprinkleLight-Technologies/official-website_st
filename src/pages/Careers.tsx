@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Moon, Sun, Menu, X, MapPin, Clock, Users, Heart, Code, Palette, Target, ArrowRight } from 'lucide-react';
+import { Moon, Sun, Menu, X, MapPin, Clock, Users, Heart, Code, Palette, Target, ArrowRight, Star, Award, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +23,8 @@ const Careers = () => {
       type: "Full-time",
       experience: "4-6 years",
       skills: ["React", "Node.js", "TypeScript", "MongoDB", "AWS"],
-      description: "Join our engineering team to build cutting-edge web applications and scalable solutions for our clients."
+      description: "Join our engineering team to build cutting-edge web applications and scalable solutions for our clients.",
+      color: "from-blue-500 to-purple-600"
     },
     {
       title: "UI/UX Designer",
@@ -32,7 +33,8 @@ const Careers = () => {
       type: "Full-time",
       experience: "2-4 years",
       skills: ["Figma", "Adobe Creative Suite", "Prototyping", "User Research", "Design Systems"],
-      description: "Create beautiful and intuitive user experiences that delight our clients and their customers."
+      description: "Create beautiful and intuitive user experiences that delight our clients and their customers.",
+      color: "from-pink-500 to-violet-600"
     },
     {
       title: "Digital Marketing Specialist",
@@ -41,7 +43,8 @@ const Careers = () => {
       type: "Full-time",
       experience: "3-5 years",
       skills: ["SEO", "SEM", "Social Media", "Content Marketing", "Analytics"],
-      description: "Drive digital marketing strategies and campaigns to help our clients achieve their business goals."
+      description: "Drive digital marketing strategies and campaigns to help our clients achieve their business goals.",
+      color: "from-green-500 to-teal-600"
     },
     {
       title: "Mobile App Developer",
@@ -50,7 +53,8 @@ const Careers = () => {
       type: "Full-time",
       experience: "3-5 years",
       skills: ["React Native", "Flutter", "iOS", "Android", "API Integration"],
-      description: "Develop innovative mobile applications for iOS and Android platforms using cutting-edge technologies."
+      description: "Develop innovative mobile applications for iOS and Android platforms using cutting-edge technologies.",
+      color: "from-orange-500 to-red-600"
     },
     {
       title: "DevOps Engineer",
@@ -59,7 +63,8 @@ const Careers = () => {
       type: "Full-time",
       experience: "4-6 years",
       skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Monitoring"],
-      description: "Build and maintain scalable infrastructure to support our growing portfolio of applications."
+      description: "Build and maintain scalable infrastructure to support our growing portfolio of applications.",
+      color: "from-indigo-500 to-blue-600"
     },
     {
       title: "Content Creator",
@@ -68,7 +73,8 @@ const Careers = () => {
       type: "Part-time",
       experience: "1-3 years",
       skills: ["Video Editing", "Writing", "Social Media", "SEO", "Analytics"],
-      description: "Create engaging content for our tech.brunch platform and client social media channels."
+      description: "Create engaging content for our tech.brunch platform and client social media channels.",
+      color: "from-yellow-500 to-orange-600"
     }
   ];
 
@@ -76,41 +82,53 @@ const Careers = () => {
     {
       icon: Heart,
       title: "Health & Wellness",
-      description: "Comprehensive health insurance, mental health support, and wellness programs"
+      description: "Comprehensive health insurance, mental health support, and wellness programs",
+      color: "from-red-500 to-pink-600"
     },
     {
       icon: Code,
       title: "Learning & Growth",
-      description: "Annual learning budget, conference attendance, and skill development programs"
+      description: "Annual learning budget, conference attendance, and skill development programs",
+      color: "from-blue-500 to-purple-600"
     },
     {
       icon: Users,
       title: "Work-Life Balance",
-      description: "Flexible working hours, remote work options, and unlimited PTO"
+      description: "Flexible working hours, remote work options, and unlimited PTO",
+      color: "from-green-500 to-teal-600"
     },
     {
       icon: Target,
       title: "Performance Rewards",
-      description: "Competitive salary, performance bonuses, and equity participation"
+      description: "Competitive salary, performance bonuses, and equity participation",
+      color: "from-orange-500 to-red-600"
     }
   ];
 
   const values = [
     {
       title: "Innovation First",
-      description: "We embrace new technologies and creative solutions to solve complex problems."
+      description: "We embrace new technologies and creative solutions to solve complex problems.",
+      icon: Zap,
+      color: "from-blue-500 to-purple-600"
     },
     {
       title: "Client Success",
-      description: "Our clients' success is our success. We go above and beyond to deliver excellence."
+      description: "Our clients' success is our success. We go above and beyond to deliver excellence.",
+      icon: Star,
+      color: "from-green-500 to-teal-600"
     },
     {
       title: "Team Collaboration",
-      description: "We believe in the power of teamwork and open communication."
+      description: "We believe in the power of teamwork and open communication.",
+      icon: Users,
+      color: "from-pink-500 to-violet-600"
     },
     {
       title: "Continuous Learning",
-      description: "We invest in our team's growth and encourage lifelong learning."
+      description: "We invest in our team's growth and encourage lifelong learning.",
+      icon: Award,
+      color: "from-orange-500 to-red-600"
     }
   ];
 
@@ -120,9 +138,9 @@ const Careers = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
+    <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+      <nav className="fixed top-0 w-full z-50 glass border-b border-white/10 dark:border-gray-700/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -196,47 +214,51 @@ const Careers = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
+      <section className="section-padding pt-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="container-modern text-center">
+          <div className="space-y-8">
+            <h1 className="text-display text-shimmer">
               Join Our
-            </span>
-            <br />
-            <span className="text-gray-900 dark:text-white">
-              Amazing Team
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            Be part of India's leading tech solutions company. We're building the future of digital transformation together.
-          </p>
-          <Button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold">
-            View Open Positions
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+            </h1>
+            <h2 className="text-hero text-gray-800 dark:text-gray-200">
+              Amazing <span className="text-transparent bg-gradient-saffron bg-clip-text">Team</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Be part of India's leading tech solutions company. We're building the future of digital transformation together.
+            </p>
+            <Button className="modern-button text-lg px-12 py-6 hover:scale-105 transform transition-all duration-300">
+              View Open Positions
+              <ArrowRight className="ml-3 w-6 h-6" />
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Company Culture */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Culture & Values
+      <section className="section-padding bg-white dark:bg-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Our Culture & <span className="text-transparent bg-gradient-primary bg-clip-text">Values</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               What makes SprinkleLight a great place to work
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="modern-card hover:shadow-2xl border-0 group">
                 <CardHeader>
-                  <CardTitle className="text-xl text-orange-500">{value.title}</CardTitle>
+                  <div className={`inline-flex p-4 bg-gradient-to-r ${value.color} rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <value.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                    {value.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400">{value.description}</p>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -245,25 +267,29 @@ const Careers = () => {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Why You'll Love Working Here
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Why You'll Love <span className="text-transparent bg-gradient-primary bg-clip-text">Working Here</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Comprehensive benefits and perks for our team members
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="inline-flex p-3 bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg mb-6">
-                  <benefit.icon className="w-6 h-6 text-white" />
+              <div key={index} className="text-center group">
+                <div className="modern-card p-8 hover:shadow-2xl h-full">
+                  <div className={`inline-flex p-4 bg-gradient-to-r ${benefit.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <benefit.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -271,49 +297,59 @@ const Careers = () => {
       </section>
 
       {/* Job Openings */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Open Positions
+      <section className="section-padding bg-white dark:bg-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Open <span className="text-transparent bg-gradient-primary bg-clip-text">Positions</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Find your next career opportunity with us
             </p>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             {jobOpenings.map((job, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="modern-card hover:shadow-2xl border-0 group">
                 <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div>
-                      <CardTitle className="text-xl mb-2">{job.title}</CardTitle>
-                      <CardDescription className="flex flex-wrap gap-4 text-sm">
-                        <span className="flex items-center">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          {job.location}
-                        </span>
-                        <span className="flex items-center">
-                          <Clock className="w-4 h-4 mr-1" />
-                          {job.type}
-                        </span>
-                        <span className="text-orange-500 font-semibold">{job.experience}</span>
-                      </CardDescription>
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-4">
+                        <div className={`w-16 h-16 bg-gradient-to-r ${job.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <span className="text-white font-bold text-xl">💼</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-2xl mb-2 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                            {job.title}
+                          </CardTitle>
+                          <CardDescription className="flex flex-wrap gap-4 text-base">
+                            <span className="flex items-center">
+                              <MapPin className="w-4 h-4 mr-2" />
+                              {job.location}
+                            </span>
+                            <span className="flex items-center">
+                              <Clock className="w-4 h-4 mr-2" />
+                              {job.type}
+                            </span>
+                            <span className="text-transparent bg-gradient-modern bg-clip-text font-bold">{job.experience}</span>
+                          </CardDescription>
+                        </div>
+                      </div>
                     </div>
                     <Button 
-                      className="mt-4 md:mt-0 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white"
+                      className="modern-button mt-6 lg:mt-0 px-8 py-4 hover:scale-105 transition-all duration-300"
                       onClick={() => handleApplyNow(job.title)}
                     >
                       Apply Now
+                      <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{job.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg leading-relaxed">{job.description}</p>
+                  <div className="flex flex-wrap gap-3">
                     {job.skills.map((skill, skillIndex) => (
-                      <span key={skillIndex} className="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded-full text-sm">
+                      <span key={skillIndex} className="px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold">
                         {skill}
                       </span>
                     ))}
@@ -326,24 +362,30 @@ const Careers = () => {
       </section>
 
       {/* Application Process */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            Our Hiring Process
-          </h2>
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Our Hiring <span className="text-transparent bg-gradient-primary bg-clip-text">Process</span>
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { step: "1", title: "Apply", description: "Submit your application and resume" },
-              { step: "2", title: "Screen", description: "Initial phone or video screening" },
-              { step: "3", title: "Interview", description: "Technical and cultural fit interviews" },
-              { step: "4", title: "Offer", description: "Receive offer and join our team" }
+              { step: "1", title: "Apply", description: "Submit your application and resume", color: "from-blue-500 to-purple-600" },
+              { step: "2", title: "Screen", description: "Initial phone or video screening", color: "from-green-500 to-teal-600" },
+              { step: "3", title: "Interview", description: "Technical and cultural fit interviews", color: "from-orange-500 to-red-600" },
+              { step: "4", title: "Offer", description: "Receive offer and join our team", color: "from-pink-500 to-violet-600" }
             ].map((process, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
-                  {process.step}
+              <div key={index} className="text-center group">
+                <div className="modern-card p-8 hover:shadow-2xl h-full">
+                  <div className={`w-20 h-20 bg-gradient-to-r ${process.color} rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {process.step}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                    {process.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{process.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{process.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{process.description}</p>
               </div>
             ))}
           </div>
@@ -351,20 +393,20 @@ const Careers = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 via-pink-600 to-purple-600 text-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Shape the Future?
+      <section className="section-padding bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white">
+        <div className="container-modern text-center">
+          <h2 className="text-section mb-6">
+            Ready to Shape the <span className="text-transparent bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text">Future?</span>
           </h2>
-          <p className="text-xl opacity-90 mb-8">
+          <p className="text-xl opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
             Don't see the perfect role? We're always looking for exceptional talent.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 transition-all duration-300 px-8 py-3">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button className="bg-white text-purple-900 hover:bg-gray-100 px-12 py-6 text-lg font-bold hover:scale-105 transition-all duration-300">
               Send Your Resume
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-3 w-6 h-6" />
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 transition-all duration-300 px-8 py-3">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-900 px-12 py-6 text-lg hover:scale-105 transition-all duration-300">
               Contact HR Team
             </Button>
           </div>

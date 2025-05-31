@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,20 +37,25 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Modern 2025 Design Variables */
+    --gradient-primary: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FECA57);
+    --gradient-secondary: linear-gradient(135deg, #667eea, #764ba2);
+    --gradient-accent: linear-gradient(135deg, #f093fb, #f5576c);
+    --gradient-warm: linear-gradient(135deg, #ffecd2, #fcb69f);
+    --gradient-cool: linear-gradient(135deg, #a8edea, #fed6e3);
+    
+    /* Indian-inspired gradients */
+    --gradient-saffron: linear-gradient(135deg, #FF9933, #FFB347);
+    --gradient-emerald: linear-gradient(135deg, #138808, #50C878);
+    --gradient-royal: linear-gradient(135deg, #663399, #9966CC);
   }
 
   .dark {
@@ -92,10 +99,158 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border font-montserrat;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Modern 2025 Gradient Classes */
+  .gradient-primary {
+    background: var(--gradient-primary);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  .gradient-saffron {
+    background: var(--gradient-saffron);
+  }
+
+  .gradient-emerald {
+    background: var(--gradient-emerald);
+  }
+
+  .gradient-royal {
+    background: var(--gradient-royal);
+  }
+
+  /* Modern Interactive Elements */
+  .modern-card {
+    @apply rounded-3xl border border-gray-200/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:rotate-1;
+  }
+
+  .modern-button {
+    @apply relative overflow-hidden rounded-2xl px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-xl;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .modern-button::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  .modern-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .modern-button > * {
+    @apply relative z-10;
+  }
+
+  /* Interactive Cursor Effects */
+  .cursor-interactive {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    @apply fixed pointer-events-none z-50 mix-blend-difference;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .custom-cursor.cursor-hover {
+    transform: scale(3);
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Micro-interactions */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s infinite;
+  }
+
+  .text-shimmer {
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s infinite;
+  }
+
+  /* Modern Section Layouts */
+  .section-padding {
+    @apply py-24 lg:py-32;
+  }
+
+  .container-modern {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/10 dark:bg-gray-900/10 backdrop-blur-lg border border-white/20 dark:border-gray-700/20;
+  }
+}
+
+@layer utilities {
+  /* Modern Typography */
+  .text-display {
+    @apply text-6xl lg:text-8xl font-black leading-none tracking-tight;
+  }
+
+  .text-hero {
+    @apply text-4xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .text-section {
+    @apply text-3xl lg:text-4xl font-bold;
+  }
+
+  /* Modern Spacing */
+  .space-modern {
+    @apply space-y-16 lg:space-y-24;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Smooth Scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }

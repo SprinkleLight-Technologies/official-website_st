@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { Moon, Sun, Menu, X, Check, Star, ArrowRight } from 'lucide-react';
+import { Moon, Sun, Menu, X, Check, Star, ArrowRight, Zap, Shield, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Footer from '@/components/Footer';
@@ -16,94 +17,162 @@ const Pricing = () => {
   const pricingPlans = [
     {
       name: "Website Development",
-      description: "Professional website solutions",
+      description: "Professional website solutions that captivate and convert",
       pricing: [
-        { tier: "Basic", price: "₹25,000", features: ["5 Page Website", "Responsive Design", "Basic SEO", "1 Month Support"] },
-        { tier: "Standard", price: "₹50,000", features: ["10 Page Website", "Custom Design", "Advanced SEO", "CMS Integration", "3 Months Support"] },
-        { tier: "Premium", price: "₹1,00,000", features: ["Unlimited Pages", "E-commerce Ready", "Advanced Features", "Performance Optimization", "6 Months Support"] }
+        { 
+          tier: "Starter", 
+          price: "₹25,000", 
+          icon: Zap,
+          features: ["5 Page Website", "Responsive Design", "Basic SEO", "1 Month Support", "Contact Forms"],
+          color: "from-blue-500 to-purple-600",
+          popular: false
+        },
+        { 
+          tier: "Professional", 
+          price: "₹50,000", 
+          icon: Shield,
+          features: ["10 Page Website", "Custom Design", "Advanced SEO", "CMS Integration", "3 Months Support", "Performance Optimization"],
+          color: "from-green-500 to-teal-600",
+          popular: true
+        },
+        { 
+          tier: "Enterprise", 
+          price: "₹1,00,000", 
+          icon: Crown,
+          features: ["Unlimited Pages", "E-commerce Ready", "Advanced Features", "Performance Optimization", "6 Months Support", "Priority Updates"],
+          color: "from-orange-500 to-red-600",
+          popular: false
+        }
       ]
     },
     {
       name: "Mobile App Development",
-      description: "iOS and Android applications",
+      description: "Cutting-edge iOS and Android applications",
       pricing: [
-        { tier: "Basic", price: "₹75,000", features: ["Single Platform", "5 Screens", "Basic Features", "App Store Submission"] },
-        { tier: "Standard", price: "₹1,50,000", features: ["Cross Platform", "10 Screens", "API Integration", "Push Notifications", "Analytics"] },
-        { tier: "Premium", price: "₹3,00,000", features: ["Advanced Features", "Backend Development", "Real-time Features", "Payment Integration", "Advanced Security"] }
+        { 
+          tier: "Basic", 
+          price: "₹75,000", 
+          icon: Zap,
+          features: ["Single Platform", "5 Screens", "Basic Features", "App Store Submission", "2 Months Support"],
+          color: "from-blue-500 to-purple-600",
+          popular: false
+        },
+        { 
+          tier: "Advanced", 
+          price: "₹1,50,000", 
+          icon: Shield,
+          features: ["Cross Platform", "10 Screens", "API Integration", "Push Notifications", "Analytics", "4 Months Support"],
+          color: "from-green-500 to-teal-600",
+          popular: true
+        },
+        { 
+          tier: "Premium", 
+          price: "₹3,00,000", 
+          icon: Crown,
+          features: ["Advanced Features", "Backend Development", "Real-time Features", "Payment Integration", "Advanced Security", "6 Months Support"],
+          color: "from-orange-500 to-red-600",
+          popular: false
+        }
       ]
     },
     {
       name: "Digital Marketing",
-      description: "Comprehensive marketing solutions",
+      description: "Comprehensive marketing solutions for growth",
       pricing: [
-        { tier: "Starter", price: "₹15,000/month", features: ["Social Media Management", "Content Creation", "Basic Analytics", "Monthly Reports"] },
-        { tier: "Growth", price: "₹30,000/month", features: ["Multi-platform Marketing", "Paid Advertising", "Advanced Analytics", "SEO Optimization", "Weekly Reports"] },
-        { tier: "Enterprise", price: "₹60,000/month", features: ["Full Marketing Suite", "Dedicated Manager", "Custom Campaigns", "Advanced Automation", "Daily Monitoring"] }
+        { 
+          tier: "Starter", 
+          price: "₹15,000/month", 
+          icon: Zap,
+          features: ["Social Media Management", "Content Creation", "Basic Analytics", "Monthly Reports", "Email Support"],
+          color: "from-blue-500 to-purple-600",
+          popular: false
+        },
+        { 
+          tier: "Growth", 
+          price: "₹30,000/month", 
+          icon: Shield,
+          features: ["Multi-platform Marketing", "Paid Advertising", "Advanced Analytics", "SEO Optimization", "Weekly Reports", "Phone Support"],
+          color: "from-green-500 to-teal-600",
+          popular: true
+        },
+        { 
+          tier: "Enterprise", 
+          price: "₹60,000/month", 
+          icon: Crown,
+          features: ["Full Marketing Suite", "Dedicated Manager", "Custom Campaigns", "Advanced Automation", "Daily Monitoring", "Priority Support"],
+          color: "from-orange-500 to-red-600",
+          popular: false
+        }
       ]
     },
     {
       name: "UI/UX Design",
-      description: "User-centered design solutions",
+      description: "User-centered design solutions that inspire",
       pricing: [
-        { tier: "Basic", price: "₹20,000", features: ["5 Screen Designs", "Wireframes", "Basic Prototyping", "2 Revisions"] },
-        { tier: "Standard", price: "₹40,000", features: ["10 Screen Designs", "Interactive Prototypes", "User Research", "Design System", "5 Revisions"] },
-        { tier: "Premium", price: "₹80,000", features: ["Complete Design System", "Advanced Prototyping", "User Testing", "Unlimited Revisions", "Design Handoff"] }
+        { 
+          tier: "Essential", 
+          price: "₹20,000", 
+          icon: Zap,
+          features: ["5 Screen Designs", "Wireframes", "Basic Prototyping", "2 Revisions", "Design Files"],
+          color: "from-blue-500 to-purple-600",
+          popular: false
+        },
+        { 
+          tier: "Professional", 
+          price: "₹40,000", 
+          icon: Shield,
+          features: ["10 Screen Designs", "Interactive Prototypes", "User Research", "Design System", "5 Revisions", "Developer Handoff"],
+          color: "from-green-500 to-teal-600",
+          popular: true
+        },
+        { 
+          tier: "Premium", 
+          price: "₹80,000", 
+          icon: Crown,
+          features: ["Complete Design System", "Advanced Prototyping", "User Testing", "Unlimited Revisions", "Design Handoff", "Post-launch Support"],
+          color: "from-orange-500 to-red-600",
+          popular: false
+        }
       ]
     }
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
+    <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      <nav className="fixed top-0 w-full z-50 glass border-b border-white/10 dark:border-gray-700/10">
+        <div className="container-modern">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SL</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center animate-pulse-glow">
+                <span className="text-white font-black text-lg">SL</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
-                SprinkleLight
-              </span>
+              <span className="text-2xl font-black text-shimmer">SprinkleLight</span>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Home
-              </a>
-              <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                About
-              </a>
-              <a href="#services" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Services
-              </a>
-              <a href="#tech-brunch" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                tech.brunch
-              </a>
-              <a href="/pricing" className="text-orange-500 dark:text-orange-400 font-semibold">
-                Pricing
-              </a>
-              <a href="/careers" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Careers
-              </a>
-              <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Contact
-              </a>
+            <div className="hidden lg:flex items-center space-x-8">
+              <a href="/" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
+              <a href="/#about" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
+              <a href="/#services" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>
+              <a href="/#tech-brunch" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">tech.brunch</a>
+              <a href="/pricing" className="text-transparent bg-gradient-modern bg-clip-text font-bold">Pricing</a>
+              <a href="/careers" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Careers</a>
+              <a href="/#contact" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Contact</a>
             </div>
 
             {/* Dark Mode Toggle & Mobile Menu */}
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="p-3 rounded-2xl glass hover:scale-110 transition-all duration-300"
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
               
               <button
-                className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+                className="lg:hidden p-3 rounded-2xl glass hover:scale-110 transition-all duration-300"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -114,68 +183,71 @@ const Pricing = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-            <div className="px-4 py-4 space-y-3">
-              <a href="/" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Home</a>
-              <a href="#about" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">About</a>
-              <a href="#services" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Services</a>
-              <a href="#tech-brunch" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">tech.brunch</a>
-              <a href="/pricing" className="block text-orange-500 font-semibold">Pricing</a>
-              <a href="/careers" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Careers</a>
-              <a href="#contact" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Contact</a>
+          <div className="lg:hidden glass border-t border-white/10 dark:border-gray-700/10">
+            <div className="container-modern py-6 space-y-4">
+              <a href="/" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
+              <a href="/#about" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
+              <a href="/#services" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>
+              <a href="/#tech-brunch" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">tech.brunch</a>
+              <a href="/pricing" className="block py-3 text-transparent bg-gradient-modern bg-clip-text font-bold">Pricing</a>
+              <a href="/careers" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Careers</a>
+              <a href="/#contact" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Contact</a>
             </div>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
+      <section className="section-padding pt-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="container-modern text-center">
+          <div className="space-y-8">
+            <h1 className="text-display text-shimmer">
               Transparent
-            </span>
-            <br />
-            <span className="text-gray-900 dark:text-white">
-              Pricing
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            Choose the perfect plan for your business needs. All our packages include world-class support and guaranteed satisfaction.
-          </p>
+            </h1>
+            <h2 className="text-hero text-gray-800 dark:text-gray-200">
+              Pricing for <span className="text-transparent bg-gradient-saffron bg-clip-text">Every Need</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Choose the perfect plan for your business. All packages include world-class support and guaranteed satisfaction.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Pricing Sections */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-20">
+      <section className="section-padding">
+        <div className="container-modern space-y-24">
           {pricingPlans.map((service, serviceIndex) => (
-            <div key={serviceIndex} className="space-y-8">
+            <div key={serviceIndex} className="space-y-12">
               <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-section text-gray-900 dark:text-white mb-4">
                   {service.name}
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400">
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                   {service.description}
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {service.pricing.map((plan, planIndex) => (
-                  <Card key={planIndex} className={`relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${planIndex === 1 ? 'border-2 border-orange-500 dark:border-orange-400' : ''}`}>
-                    {planIndex === 1 && (
-                      <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-orange-500 to-pink-600 text-white text-center py-2 text-sm font-semibold">
+                  <Card key={planIndex} className={`modern-card relative overflow-hidden hover:shadow-2xl border-0 ${plan.popular ? 'ring-2 ring-purple-500 dark:ring-purple-400 scale-105' : ''}`}>
+                    {plan.popular && (
+                      <div className="absolute top-0 left-0 right-0 bg-gradient-modern text-white text-center py-3 text-sm font-bold">
+                        <Star className="inline w-4 h-4 mr-2" />
                         Most Popular
                       </div>
                     )}
-                    <CardHeader className={planIndex === 1 ? 'pt-12' : ''}>
-                      <CardTitle className="text-2xl font-bold text-center">{plan.tier}</CardTitle>
+                    <CardHeader className={`text-center ${plan.popular ? 'pt-16' : 'pt-8'}`}>
+                      <div className={`inline-flex p-4 bg-gradient-to-r ${plan.color} rounded-2xl mb-4 mx-auto hover:scale-110 transition-transform duration-300`}>
+                        <plan.icon className="w-8 h-8 text-white" />
+                      </div>
+                      <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">{plan.tier}</CardTitle>
                       <CardDescription className="text-center">
-                        <span className="text-3xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
+                        <span className="text-4xl font-black text-transparent bg-gradient-modern bg-clip-text">{plan.price}</span>
                       </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3 mb-6">
+                    <CardContent className="space-y-6">
+                      <ul className="space-y-4">
                         {plan.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-center">
                             <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
@@ -183,9 +255,9 @@ const Pricing = () => {
                           </li>
                         ))}
                       </ul>
-                      <Button className={`w-full ${planIndex === 1 ? 'bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white' : 'border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white'}`} variant={planIndex === 1 ? 'default' : 'outline'}>
+                      <Button className={`modern-button w-full py-4 hover:scale-105 transition-all duration-300 ${plan.popular ? 'bg-gradient-modern' : 'bg-gradient-to-r ' + plan.color}`}>
                         Get Started
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                        <ArrowRight className="ml-2 w-5 h-5" />
                       </Button>
                     </CardContent>
                   </Card>
@@ -197,36 +269,41 @@ const Pricing = () => {
       </section>
 
       {/* Additional Services */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Additional Services
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Additional <span className="text-transparent bg-gradient-primary bg-clip-text">Services</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Customized solutions for your specific needs
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Customized solutions for your specific business needs
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: "Graphic Design", price: "₹5,000 - ₹25,000", description: "Logo, branding, print materials" },
-              { name: "Social Media Management", price: "₹10,000/month", description: "Complete social media strategy" },
-              { name: "Testing & Automation", price: "₹20,000 - ₹50,000", description: "Quality assurance solutions" },
-              { name: "Staff Augmentation", price: "₹50,000 - ₹2,00,000/month", description: "Expert talent acquisition" },
-              { name: "Digital Excellence Consulting", price: "₹15,000/hour", description: "Strategic digital guidance" },
-              { name: "Support & Maintenance", price: "₹5,000 - ₹20,000/month", description: "Ongoing technical support" }
+              { name: "Graphic Design", price: "₹5,000 - ₹25,000", description: "Logo, branding, print materials", color: "from-pink-500 to-violet-600" },
+              { name: "Social Media Management", price: "₹10,000/month", description: "Complete social media strategy", color: "from-blue-500 to-cyan-600" },
+              { name: "Testing & Automation", price: "₹20,000 - ₹50,000", description: "Quality assurance solutions", color: "from-green-500 to-emerald-600" },
+              { name: "Staff Augmentation", price: "₹50,000 - ₹2,00,000/month", description: "Expert talent acquisition", color: "from-orange-500 to-red-600" },
+              { name: "Digital Excellence Consulting", price: "₹15,000/hour", description: "Strategic digital guidance", color: "from-purple-500 to-indigo-600" },
+              { name: "Support & Maintenance", price: "₹5,000 - ₹20,000/month", description: "Ongoing technical support", color: "from-teal-500 to-blue-600" }
             ].map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="modern-card hover:shadow-2xl border-0 group">
                 <CardHeader>
-                  <CardTitle className="text-lg">{service.name}</CardTitle>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-white font-bold">⚡</span>
+                  </div>
+                  <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                    {service.name}
+                  </CardTitle>
                   <CardDescription>
-                    <span className="text-xl font-bold text-orange-500">{service.price}</span>
+                    <span className="text-2xl font-bold text-transparent bg-gradient-modern bg-clip-text">{service.price}</span>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
-                  <Button variant="outline" className="w-full border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                  <Button variant="outline" className="w-full hover:bg-gradient-modern hover:text-white hover:border-transparent transition-all duration-300">
                     Get Quote
                   </Button>
                 </CardContent>
@@ -237,20 +314,20 @@ const Pricing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Ready to Get Started?
+      <section className="section-padding bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white">
+        <div className="container-modern text-center">
+          <h2 className="text-section mb-6">
+            Ready to Get <span className="text-transparent bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text">Started?</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-xl opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
             Contact us today for a free consultation and custom quote for your project.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button className="modern-button px-12 py-6 text-lg hover:scale-105 transition-all duration-300">
               Get Free Consultation
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-3 w-6 h-6" />
             </Button>
-            <Button variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-3 rounded-lg font-semibold">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-900 px-12 py-6 text-lg hover:scale-105 transition-all duration-300">
               View Our Work
             </Button>
           </div>

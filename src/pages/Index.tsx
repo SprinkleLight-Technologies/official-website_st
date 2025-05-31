@@ -1,10 +1,23 @@
-import { useState } from 'react';
-import { Moon, Sun, Menu, X, ArrowRight, Play, Instagram, Youtube, Star, Globe, Smartphone, TrendingUp, Palette, Target, Users, Headphones, Bug, UserPlus } from 'lucide-react';
+
+import { useState, useEffect } from 'react';
+import { Moon, Sun, Menu, X, ArrowRight, Play, Star, Users, Award, Zap, Globe, Shield, ChevronRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Index = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -16,172 +29,104 @@ const Index = () => {
       icon: Globe,
       title: "Website Development",
       description: "Stunning, responsive websites that captivate and convert",
-      gradient: "from-orange-400 to-pink-600"
+      color: "from-blue-500 to-purple-600"
     },
     {
-      icon: Smartphone,
-      title: "Mobile App Development",
-      description: "Robust mobile applications for iOS and Android platforms",
-      gradient: "from-blue-500 to-purple-600"
+      icon: Zap,
+      title: "Mobile App Development", 
+      description: "Robust iOS & Android apps with cutting-edge features",
+      color: "from-green-500 to-teal-600"
     },
     {
-      icon: TrendingUp,
+      icon: Shield,
       title: "Digital Excellence Consulting",
-      description: "Strategic digital transformation guidance for modern businesses",
-      gradient: "from-green-400 to-blue-500"
+      description: "Strategic guidance for digital transformation success",
+      color: "from-orange-500 to-red-600"
     },
     {
-      icon: Palette,
-      title: "Graphic Design",
-      description: "Creative visual solutions that make your brand stand out",
-      gradient: "from-purple-500 to-pink-500"
+      icon: Star,
+      title: "UI/UX Design",
+      description: "User-centered designs that create memorable experiences",
+      color: "from-pink-500 to-violet-600"
     },
     {
-      icon: Target,
+      icon: Award,
       title: "Digital Marketing",
-      description: "Data-driven marketing strategies that deliver results",
-      gradient: "from-red-500 to-orange-500"
+      description: "Comprehensive strategies to amplify your brand presence",
+      color: "from-yellow-500 to-orange-600"
     },
     {
       icon: Users,
-      title: "UI/UX Design",
-      description: "User-centered design that creates exceptional experiences",
-      gradient: "from-indigo-500 to-purple-600"
-    },
-    {
-      icon: Headphones,
-      title: "Social Media Management",
-      description: "Comprehensive social media strategies and management",
-      gradient: "from-pink-500 to-rose-500"
-    },
-    {
-      icon: Bug,
-      title: "Testing & Automation",
-      description: "Quality assurance and automated testing solutions",
-      gradient: "from-cyan-500 to-blue-500"
-    },
-    {
-      icon: UserPlus,
       title: "Staff Augmentation",
-      description: "Expert talent acquisition and team scaling solutions",
-      gradient: "from-emerald-500 to-teal-500"
-    }
-  ];
-
-  const features = [
-    {
-      title: "10+ Years Experience",
-      description: "Delivering excellence since our inception"
-    },
-    {
-      title: "500+ Projects Completed",
-      description: "Successfully delivered across various industries"
-    },
-    {
-      title: "24/7 Support",
-      description: "Round-the-clock assistance for our clients"
-    },
-    {
-      title: "100% Client Satisfaction",
-      description: "Committed to exceeding expectations"
+      description: "Expert talent acquisition for your growing business",
+      color: "from-indigo-500 to-blue-600"
     }
   ];
 
   const clients = [
-    {
-      name: "TechCorp India",
-      logo: "https://images.unsplash.com/photo-1560472355-536de3962603?w=150&h=80&fit=crop&crop=center",
-      industry: "Technology"
-    },
-    {
-      name: "GreenEnergy Solutions",
-      logo: "https://images.unsplash.com/photo-1497436072909-f5e4e214e30d?w=150&h=80&fit=crop&crop=center",
-      industry: "Renewable Energy"
-    },
-    {
-      name: "FinanceFlow",
-      logo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=150&h=80&fit=crop&crop=center",
-      industry: "Financial Services"
-    },
-    {
-      name: "HealthCare Plus",
-      logo: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=150&h=80&fit=crop&crop=center",
-      industry: "Healthcare"
-    },
-    {
-      name: "EduTech Global",
-      logo: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=150&h=80&fit=crop&crop=center",
-      industry: "Education"
-    },
-    {
-      name: "RetailMax",
-      logo: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=150&h=80&fit=crop&crop=center",
-      industry: "E-commerce"
-    },
-    {
-      name: "TravelEase",
-      logo: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=150&h=80&fit=crop&crop=center",
-      industry: "Travel & Tourism"
-    },
-    {
-      name: "FoodieDelight",
-      logo: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=150&h=80&fit=crop&crop=center",
-      industry: "Food & Beverage"
-    }
+    { name: "TechCorp", logo: "TC", color: "bg-gradient-to-r from-blue-600 to-purple-600" },
+    { name: "InnovateLabs", logo: "IL", color: "bg-gradient-to-r from-green-600 to-teal-600" },
+    { name: "FutureVision", logo: "FV", color: "bg-gradient-to-r from-orange-600 to-red-600" },
+    { name: "DigitalFlow", logo: "DF", color: "bg-gradient-to-r from-pink-600 to-violet-600" },
+    { name: "CloudSync", logo: "CS", color: "bg-gradient-to-r from-yellow-600 to-orange-600" },
+    { name: "DataDrive", logo: "DD", color: "bg-gradient-to-r from-indigo-600 to-blue-600" },
+    { name: "SmartSolutions", logo: "SS", color: "bg-gradient-to-r from-emerald-600 to-green-600" },
+    { name: "NextGen", logo: "NG", color: "bg-gradient-to-r from-purple-600 to-pink-600" }
+  ];
+
+  const stats = [
+    { number: "500+", label: "Projects Delivered", icon: Award },
+    { number: "200+", label: "Happy Clients", icon: Users },
+    { number: "50+", label: "Team Members", icon: Star },
+    { number: "5+", label: "Years Experience", icon: Globe }
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
+    <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
+      {/* Custom Cursor */}
+      <div 
+        className={`custom-cursor ${isHovering ? 'cursor-hover' : ''}`}
+        style={{ left: cursorPosition.x, top: cursorPosition.y }}
+      />
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      <nav className="fixed top-0 w-full z-50 glass border-b border-white/10 dark:border-gray-700/10">
+        <div className="container-modern">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SL</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center animate-pulse-glow">
+                <span className="text-white font-black text-lg">SL</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
+              <span className="text-2xl font-black text-shimmer">
                 SprinkleLight
               </span>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Home
-              </a>
-              <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                About
-              </a>
-              <a href="#services" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Services
-              </a>
-              <a href="#tech-brunch" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                tech.brunch
-              </a>
-              <a href="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Pricing
-              </a>
-              <a href="/careers" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Careers
-              </a>
-              <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                Contact
-              </a>
+            <div className="hidden lg:flex items-center space-x-8">
+              <a href="#home" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
+              <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
+              <a href="#services" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>
+              <a href="#tech-brunch" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">tech.brunch</a>
+              <a href="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Pricing</a>
+              <a href="/careers" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Careers</a>
+              <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Contact</a>
             </div>
 
-            {/* Dark Mode Toggle & Mobile Menu */}
+            {/* Dark Mode & Mobile Menu */}
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="p-3 rounded-2xl glass hover:scale-110 transition-all duration-300"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
               
               <button
-                className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+                className="lg:hidden p-3 rounded-2xl glass hover:scale-110 transition-all duration-300"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -192,140 +137,189 @@ const Index = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-            <div className="px-4 py-4 space-y-3">
-              <a href="#home" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Home</a>
-              <a href="#about" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">About</a>
-              <a href="#services" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Services</a>
-              <a href="#tech-brunch" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">tech.brunch</a>
-              <a href="/pricing" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Pricing</a>
-              <a href="/careers" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Careers</a>
-              <a href="#contact" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Contact</a>
+          <div className="lg:hidden glass border-t border-white/10 dark:border-gray-700/10">
+            <div className="container-modern py-6 space-y-4">
+              <a href="#home" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
+              <a href="#about" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
+              <a href="#services" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>
+              <a href="#tech-brunch" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">tech.brunch</a>
+              <a href="/pricing" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Pricing</a>
+              <a href="/careers" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Careers</a>
+              <a href="#contact" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Contact</a>
             </div>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center py-20">
-            <div className="relative">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-orange-500 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-                  Digital Excellence
-                </span>
-                <br />
-                <span className="text-gray-900 dark:text-white">
-                  Redefined
-                </span>
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        {/* Animated Background */}
+        <div className="absolute inset-0 gradient-primary opacity-5 animate-gradient-shift"></div>
+        
+        <div className="container-modern text-center relative z-10 pt-20">
+          <div className="space-y-8 lg:space-y-12">
+            <div className="space-y-6">
+              <h1 className="text-display text-shimmer">
+                Digital Excellence
               </h1>
-              
-              {/* Indian-inspired decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-orange-400 to-pink-600 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-10 animate-pulse delay-1000"></div>
+              <h2 className="text-hero text-gray-800 dark:text-gray-200">
+                Redefined for <span className="text-transparent bg-gradient-saffron bg-clip-text">India</span>
+              </h2>
+              <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                We craft cutting-edge digital solutions that transform businesses and create extraordinary user experiences across the digital landscape.
+              </p>
             </div>
-            
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-              Empowering businesses across India and beyond with cutting-edge technology solutions, 
-              innovative design, and strategic digital transformation.
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button 
+                className="modern-button text-lg px-12 py-6 hover:scale-105 transform transition-all duration-300"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                Start Your Journey
+                <ArrowRight className="ml-3 w-6 h-6" />
+              </Button>
+              <Button 
+                variant="outline" 
+                className="modern-card border-2 px-12 py-6 text-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-300"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                <Play className="mr-3 w-6 h-6" />
+                Watch Demo
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-1/4 left-10 w-20 h-20 gradient-saffron rounded-full opacity-20 float-animation"></div>
+        <div className="absolute bottom-1/4 right-10 w-16 h-16 gradient-emerald rounded-full opacity-20 float-animation" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-12 h-12 gradient-royal rounded-full opacity-20 float-animation" style={{animationDelay: '4s'}}></div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="section-padding bg-white dark:bg-gray-900">
+        <div className="container-modern">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="modern-card p-8 hover:shadow-2xl">
+                  <div className="inline-flex p-4 gradient-modern rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <stat.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-2">{stat.number}</div>
+                  <div className="text-gray-600 dark:text-gray-400 font-semibold">{stat.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="section-padding bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Pioneering <span className="text-transparent bg-gradient-primary bg-clip-text">Innovation</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              SprinkleLight Technologies stands at the forefront of digital transformation, blending cutting-edge technology with authentic Indian creativity to deliver world-class solutions.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button variant="outline" className="border-2 border-gray-300 dark:border-gray-600 hover:border-orange-500 dark:hover:border-orange-400 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
-                View Our Work
-              </Button>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Our Mission</h3>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  To empower businesses across India and beyond with innovative digital solutions that drive growth, enhance user experiences, and create lasting impact in the digital realm.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="modern-card p-6">
+                  <div className="text-2xl font-bold text-transparent bg-gradient-saffron bg-clip-text mb-2">500+</div>
+                  <div className="text-gray-600 dark:text-gray-400">Projects Completed</div>
+                </div>
+                <div className="modern-card p-6">
+                  <div className="text-2xl font-bold text-transparent bg-gradient-emerald bg-clip-text mb-2">98%</div>
+                  <div className="text-gray-600 dark:text-gray-400">Client Satisfaction</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="modern-card p-8 hover:shadow-2xl">
+              <div className="aspect-video rounded-2xl gradient-primary flex items-center justify-center">
+                <Play className="w-16 h-16 text-white hover:scale-110 transition-transform duration-300 cursor-pointer" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex items-center justify-center mb-4">
-                  <Star className="w-8 h-8 text-orange-500" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
-              </div>
+      {/* Services Section */}
+      <section id="services" className="section-padding bg-white dark:bg-gray-900">
+        <div className="container-modern">
+          <div className="text-center mb-16">
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Our <span className="text-transparent bg-gradient-primary bg-clip-text">Services</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Comprehensive digital solutions tailored to elevate your business and create exceptional user experiences.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card key={index} className="modern-card hover:shadow-2xl group border-0">
+                <CardHeader className="text-center pb-4">
+                  <div className={`inline-flex p-4 bg-gradient-to-r ${service.color} rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <CardDescription className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
+                    {service.description}
+                  </CardDescription>
+                  <Button variant="outline" className="mt-6 hover:bg-gradient-modern hover:text-white hover:border-transparent transition-all duration-300">
+                    Learn More
+                    <ChevronRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Our Clients Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="container-modern">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Our <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">Clients</span>
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Trusted by <span className="text-transparent bg-gradient-primary bg-clip-text">Leading Brands</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Trusted by industry leaders across various sectors to deliver exceptional digital solutions.
+              We're proud to partner with innovative companies that share our vision for digital excellence.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {clients.map((client, index) => (
-              <div key={index} className="group text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="mb-4 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center h-20">
-                  <img 
-                    src={client.logo} 
-                    alt={client.name}
-                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
+              <div key={index} className="text-center group">
+                <div className="modern-card p-8 hover:shadow-2xl mb-4">
+                  <div className={`w-16 h-16 mx-auto ${client.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    {client.logo}
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-modern group-hover:bg-clip-text transition-all duration-300">
+                    {client.name}
+                  </h3>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{client.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{client.industry}</p>
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold">
-              Become Our Next Success Story
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Our <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">Services</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Comprehensive technology solutions designed to accelerate your business growth and digital transformation journey.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="group relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 hover:border-transparent overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                
-                <div className={`inline-flex p-3 bg-gradient-to-r ${service.gradient} rounded-lg mb-6`}>
-                  <service.icon className="w-6 h-6 text-white" />
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
-                
-                <button className={`inline-flex items-center text-sm font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent hover:underline`}>
-                  Learn More
-                  <ArrowRight className="ml-1 w-4 h-4" />
-                </button>
               </div>
             ))}
           </div>
@@ -333,178 +327,118 @@ const Index = () => {
       </section>
 
       {/* tech.brunch Section */}
-      <section id="tech-brunch" className="py-20 bg-gradient-to-r from-orange-500 via-pink-600 to-purple-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">tech.brunch</h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Stay ahead of the curve with the latest tech news, insights, and innovations. 
-              Your daily dose of technology updates, served fresh!
+      <section id="tech-brunch" className="section-padding bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white overflow-hidden relative">
+        <div className="absolute inset-0 gradient-primary opacity-10 animate-gradient-shift"></div>
+        
+        <div className="container-modern relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-section mb-6">
+              <span className="text-transparent bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text">tech.brunch</span>
+            </h2>
+            <p className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+              Stay ahead of the curve with the latest tech insights, trends, and industry updates from our expert team.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all duration-300">
-              <Youtube className="w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-2xl font-bold mb-2">YouTube Channel</h3>
-              <p className="opacity-90 mb-4">Weekly tech reviews, tutorials, and industry insights</p>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 transition-all duration-300">
-                <Play className="mr-2 w-4 h-4" />
-                Subscribe Now
-              </Button>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all duration-300">
-              <Instagram className="w-12 h-12 mb-4 mx-auto" />
-              <h3 className="text-2xl font-bold mb-2">Instagram</h3>
-              <p className="opacity-90 mb-4">Daily tech facts, quick tips, and behind-the-scenes content</p>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 transition-all duration-300">
-                <Instagram className="mr-2 w-4 h-4" />
-                Follow Us
-              </Button>
-            </div>
-          </div>
-          
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Latest Tech Updates</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              <div className="bg-white/10 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">AI Revolution 2024</h4>
-                <p className="text-sm opacity-90">Exploring the latest developments in artificial intelligence</p>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">Web3 Innovation</h4>
-                <p className="text-sm opacity-90">Decentralized technologies shaping the future</p>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">Mobile Tech Trends</h4>
-                <p className="text-sm opacity-90">Latest mobile app development frameworks</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                About <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">SprinkleLight</span>
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                Based in the heart of India, SprinkleLight Technologies has been at the forefront of digital innovation, 
-                helping businesses transform their digital presence and achieve extraordinary growth.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-                Our team of passionate developers, designers, and strategists work collaboratively to deliver 
-                solutions that not only meet but exceed expectations, combining global best practices with 
-                deep understanding of the Indian market.
-              </p>
-              <Button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold">
-                Learn More About Us
-              </Button>
-            </div>
-            
-            <div className="relative">
-              <div className="bg-gradient-to-r from-orange-500 to-pink-600 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-                <p className="text-lg opacity-90 mb-6">
-                  To empower businesses with innovative technology solutions that drive growth, 
-                  enhance user experiences, and create lasting digital impact.
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-3xl font-bold">Latest Tech News & Insights</h3>
+                <p className="text-lg opacity-80 leading-relaxed">
+                  From breakthrough innovations to industry analysis, tech.brunch delivers curated content that keeps you informed and inspired in the rapidly evolving world of technology.
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">500+</div>
-                    <div className="text-sm opacity-90">Projects Delivered</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">50+</div>
-                    <div className="text-sm opacity-90">Team Members</div>
-                  </div>
-                </div>
               </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-30"></div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button className="bg-red-600 hover:bg-red-700 px-8 py-4 hover:scale-105 transition-all duration-300">
+                  <ExternalLink className="mr-3 w-5 h-5" />
+                  YouTube Channel
+                </Button>
+                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 hover:scale-105 transition-all duration-300">
+                  <ExternalLink className="mr-3 w-5 h-5" />
+                  Instagram
+                </Button>
+              </div>
+            </div>
+
+            <div className="modern-card hover:shadow-2xl bg-white/10 backdrop-blur-lg border-white/20">
+              <div className="aspect-video rounded-2xl bg-gradient-to-br from-orange-500 to-pink-600 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 gradient-primary opacity-30 animate-gradient-shift"></div>
+                <Play className="w-20 h-20 text-white hover:scale-110 transition-transform duration-300 cursor-pointer relative z-10" />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold mb-2">Latest Episode</h4>
+                <p className="opacity-80">The Future of AI in Web Development</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section id="contact" className="section-padding bg-white dark:bg-gray-900">
+        <div className="container-modern">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Let's <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">Connect</span>
+            <h2 className="text-section text-gray-900 dark:text-white mb-6">
+              Let's Create Something <span className="text-transparent bg-gradient-primary bg-clip-text">Amazing</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Ready to transform your digital presence? Get in touch with our experts today.
+              Ready to transform your digital presence? Get in touch with our team and let's bring your vision to life.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h3>
-              <form className="space-y-6">
-                <div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="modern-card p-12 hover:shadow-2xl">
+              <div className="grid lg:grid-cols-2 gap-12">
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Get Started Today</h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Whether you need a stunning website, powerful mobile app, or comprehensive digital strategy, we're here to help you achieve your goals.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 gradient-modern rounded-2xl flex items-center justify-center">
+                        <span className="text-white font-bold">📧</span>
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900 dark:text-white">Email Us</div>
+                        <div className="text-gray-600 dark:text-gray-400">hello@sprinklelight.com</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 gradient-modern rounded-2xl flex items-center justify-center">
+                        <span className="text-white font-bold">📱</span>
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900 dark:text-white">Call Us</div>
+                        <div className="text-gray-600 dark:text-gray-400">+91 80 1234 5678</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
                   <input 
                     type="text" 
                     placeholder="Your Name" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
                   />
-                </div>
-                <div>
                   <input 
                     type="email" 
                     placeholder="Your Email" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
                   />
-                </div>
-                <div>
                   <textarea 
-                    rows={5} 
-                    placeholder="Your Message" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  ></textarea>
-                </div>
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white py-3 rounded-lg font-semibold">
-                  Send Message
-                </Button>
-              </form>
-            </div>
-            
-            <div className="space-y-8">
-              <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Office Address</h4>
-                <p className="text-gray-600 dark:text-gray-400">
-                  123 Tech Hub, Innovation District<br />
-                  Bangalore, Karnataka 560001<br />
-                  India
-                </p>
-              </div>
-              
-              <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact Info</h4>
-                <p className="text-gray-600 dark:text-gray-400 mb-2">
-                  Email: hello@sprinklelight.tech
-                </p>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Phone: +91 98765 43210
-                </p>
-              </div>
-              
-              <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h4>
-                <div className="flex space-x-3">
-                  <Button variant="outline" size="sm" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
-                    <Instagram className="w-4 h-4" />
-                  </Button>
-                  <Button variant="outline" size="sm" className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
-                    <Youtube className="w-4 h-4" />
+                    placeholder="Tell us about your project" 
+                    rows={4}
+                    className="w-full p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 resize-none"
+                  />
+                  <Button className="modern-button w-full py-4 text-lg hover:scale-105 transition-all duration-300">
+                    Send Message
+                    <ArrowRight className="ml-3 w-5 h-5" />
                   </Button>
                 </div>
               </div>
@@ -514,58 +448,53 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">SL</span>
+      <footer className="bg-gray-900 dark:bg-black text-white py-16">
+        <div className="container-modern">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center">
+                  <span className="text-white font-black text-lg">SL</span>
                 </div>
-                <span className="text-xl font-bold">SprinkleLight</span>
+                <span className="text-2xl font-black text-shimmer">SprinkleLight</span>
               </div>
-              <p className="text-gray-400">
-                Transforming businesses through innovative technology solutions and exceptional digital experiences.
+              <p className="text-gray-400 leading-relaxed">
+                Pioneering digital excellence across India with innovative solutions and cutting-edge technology.
               </p>
             </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-orange-400 transition-colors">Web Development</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">Mobile Apps</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">UI/UX Design</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">Digital Marketing</a></li>
-              </ul>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold">Quick Links</h3>
+              <div className="space-y-3">
+                <a href="#home" className="block text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="#about" className="block text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#services" className="block text-gray-400 hover:text-white transition-colors">Services</a>
+                <a href="/pricing" className="block text-gray-400 hover:text-white transition-colors">Pricing</a>
+              </div>
             </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-orange-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">tech.brunch</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">Contact</a></li>
-              </ul>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold">Services</h3>
+              <div className="space-y-3">
+                <div className="text-gray-400">Website Development</div>
+                <div className="text-gray-400">Mobile Apps</div>
+                <div className="text-gray-400">UI/UX Design</div>
+                <div className="text-gray-400">Digital Marketing</div>
+              </div>
             </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Connect</h4>
-              <p className="text-gray-400 mb-2">hello@sprinklelight.tech</p>
-              <p className="text-gray-400 mb-4">+91 98765 43210</p>
-              <div className="flex space-x-3">
-                <Button variant="outline" size="sm" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
-                  <Instagram className="w-4 h-4" />
-                </Button>
-                <Button variant="outline" size="sm" className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
-                  <Youtube className="w-4 h-4" />
-                </Button>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold">Contact</h3>
+              <div className="space-y-3">
+                <div className="text-gray-400">📧 hello@sprinklelight.com</div>
+                <div className="text-gray-400">📱 +91 80 1234 5678</div>
+                <div className="text-gray-400">📍 Bangalore, India</div>
               </div>
             </div>
           </div>
-          
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 SprinkleLight Technologies. All rights reserved. Made with ❤️ in India.</p>
+
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+            <p className="text-gray-400">© 2025 SprinkleLight Technologies. All rights reserved.</p>
           </div>
         </div>
       </footer>

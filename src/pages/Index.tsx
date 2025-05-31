@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Moon, Sun, Menu, X, ArrowRight, Play, Instagram, Youtube, Star, Globe, Smartphone, TrendingUp, Palette, Target, Users, Headphones, Bug, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -88,6 +87,49 @@ const Index = () => {
     }
   ];
 
+  const clients = [
+    {
+      name: "TechCorp India",
+      logo: "https://images.unsplash.com/photo-1560472355-536de3962603?w=150&h=80&fit=crop&crop=center",
+      industry: "Technology"
+    },
+    {
+      name: "GreenEnergy Solutions",
+      logo: "https://images.unsplash.com/photo-1497436072909-f5e4e214e30d?w=150&h=80&fit=crop&crop=center",
+      industry: "Renewable Energy"
+    },
+    {
+      name: "FinanceFlow",
+      logo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=150&h=80&fit=crop&crop=center",
+      industry: "Financial Services"
+    },
+    {
+      name: "HealthCare Plus",
+      logo: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=150&h=80&fit=crop&crop=center",
+      industry: "Healthcare"
+    },
+    {
+      name: "EduTech Global",
+      logo: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=150&h=80&fit=crop&crop=center",
+      industry: "Education"
+    },
+    {
+      name: "RetailMax",
+      logo: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=150&h=80&fit=crop&crop=center",
+      industry: "E-commerce"
+    },
+    {
+      name: "TravelEase",
+      logo: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=150&h=80&fit=crop&crop=center",
+      industry: "Travel & Tourism"
+    },
+    {
+      name: "FoodieDelight",
+      logo: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=150&h=80&fit=crop&crop=center",
+      industry: "Food & Beverage"
+    }
+  ];
+
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
       {/* Navigation */}
@@ -118,10 +160,10 @@ const Index = () => {
               <a href="#tech-brunch" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
                 tech.brunch
               </a>
-              <a href="#pricing" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+              <a href="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
                 Pricing
               </a>
-              <a href="#careers" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+              <a href="/careers" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
                 Careers
               </a>
               <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
@@ -156,8 +198,8 @@ const Index = () => {
               <a href="#about" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">About</a>
               <a href="#services" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Services</a>
               <a href="#tech-brunch" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">tech.brunch</a>
-              <a href="#pricing" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Pricing</a>
-              <a href="#careers" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Careers</a>
+              <a href="/pricing" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Pricing</a>
+              <a href="/careers" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Careers</a>
               <a href="#contact" className="block text-gray-700 dark:text-gray-300 hover:text-orange-500">Contact</a>
             </div>
           </div>
@@ -215,6 +257,43 @@ const Index = () => {
                 <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Clients Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              Our <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">Clients</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Trusted by industry leaders across various sectors to deliver exceptional digital solutions.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {clients.map((client, index) => (
+              <div key={index} className="group text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="mb-4 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center h-20">
+                  <img 
+                    src={client.logo} 
+                    alt={client.name}
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{client.name}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{client.industry}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold">
+              Become Our Next Success Story
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
@@ -420,7 +499,7 @@ const Index = () => {
               
               <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-lg">
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h4>
-                <div className="flex space-x-4">
+                <div className="flex space-x-3">
                   <Button variant="outline" size="sm" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                     <Instagram className="w-4 h-4" />
                   </Button>

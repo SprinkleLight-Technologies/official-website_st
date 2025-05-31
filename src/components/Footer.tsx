@@ -96,9 +96,9 @@ const Footer = () => {
             © 2024 SprinkleLight Technologies. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm text-gray-400 mt-4 md:mt-0">
-            <a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">Cookie Policy</a>
+            <a href="/privacy-policy" className="hover:text-orange-400 transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:text-orange-400 transition-colors">Terms of Service</a>
+            <a href="/cookie-policy" className="hover:text-orange-400 transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>

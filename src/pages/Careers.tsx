@@ -1,14 +1,30 @@
-import { useState } from 'react';
-import { Moon, Sun, Menu, X, MapPin, Clock, Users, Heart, Code, Palette, Target, ArrowRight, Star, Award, Zap } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Moon, Sun, Menu, X, MapPin, Clock, Users, Heart, Code, Palette, Target, ArrowRight, Star, Award, Zap, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import Footer from '@/components/Footer';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 const Careers = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showJobFraudAlert, setShowJobFraudAlert] = useState(false);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Show the job fraud alert when the component mounts
+    setShowJobFraudAlert(true);
+  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -139,6 +155,34 @@ const Careers = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
+      {/* Job Fraud Alert Dialog */}
+      <AlertDialog open={showJobFraudAlert} onOpenChange={setShowJobFraudAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-orange-500" />
+              Important Notice About Job Fraud
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              <p className="mb-4">
+                We have been made aware of fraudulent job offers being made in the name of SprinkleLight Technologies. 
+                Please be cautious of such scams.
+              </p>
+              <p className="mb-4 font-medium">
+                SprinkleLight Technologies only hires through our official website careers page and LinkedIn. 
+                We never ask for payment during the recruitment process.
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                If you have any concerns or have been approached by someone claiming to represent SprinkleLight Technologies 
+                outside of our official channels, please contact us immediately.
+              </p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction>I understand</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 glass border-b border-white/10 dark:border-gray-700/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

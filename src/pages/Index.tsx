@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X, ArrowRight, Play, Star, Users, Award, Zap, Globe, Shield, ChevronRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -106,7 +107,7 @@ const Index = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               <a href="#home" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
-              <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
+              <a href="/about-us" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
               <a href="#services" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>
               <a href="#tech-brunch" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">tech.brunch</a>
               <a href="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Pricing</a>
@@ -140,7 +141,7 @@ const Index = () => {
           <div className="lg:hidden glass border-t border-white/10 dark:border-gray-700/10">
             <div className="container-modern py-6 space-y-4">
               <a href="#home" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
-              <a href="#about" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
+              <a href="/about-us" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
               <a href="#services" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>
               <a href="#tech-brunch" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">tech.brunch</a>
               <a href="/pricing" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Pricing</a>
@@ -448,56 +449,8 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 dark:bg-black text-white py-16">
-        <div className="container-modern">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="space-y-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center">
-                  <span className="text-white font-black text-lg">SL</span>
-                </div>
-                <span className="text-2xl font-black text-shimmer">SprinkleLight</span>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                Pioneering digital excellence across India with innovative solutions and cutting-edge technology.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold">Quick Links</h3>
-              <div className="space-y-3">
-                <a href="#home" className="block text-gray-400 hover:text-white transition-colors">Home</a>
-                <a href="#about" className="block text-gray-400 hover:text-white transition-colors">About</a>
-                <a href="#services" className="block text-gray-400 hover:text-white transition-colors">Services</a>
-                <a href="/pricing" className="block text-gray-400 hover:text-white transition-colors">Pricing</a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold">Services</h3>
-              <div className="space-y-3">
-                <div className="text-gray-400">Website Development</div>
-                <div className="text-gray-400">Mobile Apps</div>
-                <div className="text-gray-400">UI/UX Design</div>
-                <div className="text-gray-400">Digital Marketing</div>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold">Contact</h3>
-              <div className="space-y-3">
-                <div className="text-gray-400">📧 hello@sprinklelight.com</div>
-                <div className="text-gray-400">📱 +91 80 1234 5678</div>
-                <div className="text-gray-400">📍 Bangalore, India</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400">© 2025 SprinkleLight Technologies. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

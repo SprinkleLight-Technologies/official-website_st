@@ -1,8 +1,8 @@
-
 import { useState } from 'react';
 import { Moon, Sun, Menu, X, Check, Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Footer from '@/components/Footer';
 
 const Pricing = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -256,6 +256,9 @@ const Pricing = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

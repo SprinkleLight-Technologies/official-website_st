@@ -1,12 +1,14 @@
-
 import { useState } from 'react';
 import { Moon, Sun, Menu, X, MapPin, Clock, Users, Heart, Code, Palette, Target, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
+import Footer from '@/components/Footer';
 
 const Careers = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -111,6 +113,11 @@ const Careers = () => {
       description: "We invest in our team's growth and encourage lifelong learning."
     }
   ];
+
+  const handleApplyNow = (jobTitle: string) => {
+    const jobId = jobTitle.toLowerCase().replace(/\s+/g, '-');
+    navigate(`/job/${jobId}`);
+  };
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
@@ -294,7 +301,10 @@ const Careers = () => {
                         <span className="text-orange-500 font-semibold">{job.experience}</span>
                       </CardDescription>
                     </div>
-                    <Button className="mt-4 md:mt-0 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white">
+                    <Button 
+                      className="mt-4 md:mt-0 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white"
+                      onClick={() => handleApplyNow(job.title)}
+                    >
                       Apply Now
                     </Button>
                   </div>
@@ -360,6 +370,9 @@ const Careers = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

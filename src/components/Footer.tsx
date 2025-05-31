@@ -9,12 +9,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SL</span>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
-                SprinkleLight
-              </span>
+              <img 
+                src="/ST White Logo.png" 
+                alt="SprinkleLight Logo" 
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-gray-400 text-sm">
               Leading tech solutions provider in India, delivering innovative digital experiences and cutting-edge technology solutions.
@@ -54,18 +53,18 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-orange-400 mt-1 flex-shrink-0" />
                 <span className="text-gray-400">
-                  123 Tech Park, Electronic City<br />
-                  Bangalore, Karnataka 560100<br />
+                  Near Prozone Mall, Saravanampatty<br />
+                  Coimbatore, Tamil Nadu 641035<br />
                   India
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span className="text-gray-400">+91 80 1234 5678</span>
+                <span className="text-gray-400">+91 868 202 8606</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span className="text-gray-400">hello@sprinklelight.com</span>
+                <span className="text-gray-400">sprinklelight@outlook.com</span>
               </div>
             </div>
 

@@ -65,10 +65,10 @@ const Index = () => {
   ];
 
   const clients = [
-    { name: "TechCorp", logo: "TC", color: "bg-gradient-to-r from-blue-600 to-purple-600" },
-    { name: "InnovateLabs", logo: "IL", color: "bg-gradient-to-r from-green-600 to-teal-600" },
-    { name: "FutureVision", logo: "FV", color: "bg-gradient-to-r from-orange-600 to-red-600" },
-    { name: "DigitalFlow", logo: "DF", color: "bg-gradient-to-r from-pink-600 to-violet-600" },
+    { name: "IGNITE Career Academy", logo: "TC", color: "bg-gradient-to-r from-blue-600 to-purple-600" },
+    { name: "iQOO", logo: "IL", color: "bg-gradient-to-r from-green-600 to-teal-600" },
+    { name: "INFO Institute of Engineering", logo: "FV", color: "bg-gradient-to-r from-orange-600 to-red-600" },
+    { name: "INVENTKART Inc", logo: "DF", color: "bg-gradient-to-r from-pink-600 to-violet-600" },
     { name: "CloudSync", logo: "CS", color: "bg-gradient-to-r from-yellow-600 to-orange-600" },
     { name: "DataDrive", logo: "DD", color: "bg-gradient-to-r from-indigo-600 to-blue-600" },
     { name: "SmartSolutions", logo: "SS", color: "bg-gradient-to-r from-emerald-600 to-green-600" },
@@ -96,12 +96,11 @@ const Index = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center animate-pulse-glow">
-                <span className="text-white font-black text-lg">SL</span>
-              </div>
-              <span className="text-2xl font-black text-shimmer">
-                SprinkleLight
-              </span>
+              <img 
+                src={darkMode ? "/ST White Logo.png" : "/ST Main Logo.png"} 
+                alt="SprinkleLight Logo" 
+                className="h-12 w-auto transition-all duration-300"
+              />
             </div>
 
             {/* Desktop Navigation */}
@@ -113,10 +112,19 @@ const Index = () => {
               <a href="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Pricing</a>
               <a href="/careers" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Careers</a>
               <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Contact</a>
+              <a href="/login" className="px-4 py-2 rounded-lg bg-gradient-modern text-white hover:shadow-lg transition-all duration-300 font-semibold">Login</a>
             </div>
 
             {/* Dark Mode & Mobile Menu */}
             <div className="flex items-center space-x-4">
+              <a 
+                href="/login"
+                className="lg:hidden px-4 py-2 rounded-lg bg-gradient-modern text-white hover:shadow-lg transition-all duration-300 font-semibold"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                Login
+              </a>
               <button
                 onClick={toggleDarkMode}
                 className="p-3 rounded-2xl glass hover:scale-110 transition-all duration-300"
@@ -140,6 +148,13 @@ const Index = () => {
         {mobileMenuOpen && (
           <div className="lg:hidden glass border-t border-white/10 dark:border-gray-700/10">
             <div className="container-modern py-6 space-y-4">
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src={darkMode ? "/ST White Logo.png" : "/ST Main Logo.png"} 
+                  alt="SprinkleLight Logo" 
+                  className="h-10 w-auto transition-all duration-300"
+                />
+              </div>
               <a href="#home" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Home</a>
               <a href="/about-us" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">About</a>
               <a href="#services" className="block py-3 text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-modern hover:bg-clip-text transition-all duration-300 font-semibold">Services</a>

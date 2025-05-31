@@ -22,12 +22,11 @@ const AboutUs = () => {
               {/* Logo */}
               <div className="flex items-center">
                 <a href="/" className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">SL</span>
-                  </div>
-                  <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
-                    SprinkleLight
-                  </span>
+                  <img 
+                    src={darkMode ? "/ST White Logo.png" : "/ST Main Logo.png"} 
+                    alt="SprinkleLight Logo" 
+                    className="h-10 w-auto transition-all duration-300"
+                  />
                 </a>
               </div>
 
